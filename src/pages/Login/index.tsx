@@ -1,4 +1,3 @@
-import { useEffect, useState } from "preact/hooks";
 import {
   ButtonContainer,
   ButtonLogin,
@@ -10,8 +9,9 @@ import {
 } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { getUserById, loginUser, registerUser } from "../../services/userServices";
+import { useEffect, useState } from "react";
 
-export function Login() {
+export function Login () {
   const [user, setUser] = useState<{ name: string } | null>(null);
 
   const [isRegister, setIsRegister] = useState(false);
@@ -36,7 +36,7 @@ export function Login() {
     }
   }, []);
 
-  async function handleSubmit(e: Event) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null)
 

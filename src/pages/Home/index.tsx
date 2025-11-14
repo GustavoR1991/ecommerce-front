@@ -1,4 +1,4 @@
-import { useEffect, useState } from "preact/hooks"
+import { useEffect, useState } from "react";
 import { getUserById } from "../../services/userServices";
 import { HomeContainer, Text } from "./styles";
 
