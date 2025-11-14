@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -16,7 +16,3 @@ export const GlobalStyle = createGlobalStyle`
     }
 `;
 
-
-export const Background = styled.div`
-  background: ${props => props.theme["green-700"]} ;
-`

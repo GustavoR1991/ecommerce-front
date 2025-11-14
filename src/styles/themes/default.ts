@@ -17,4 +17,11 @@ export const defaultTheme = {
   'red-300': '#F75A68',
   'red-500': '#AB222E',
   'red-700': '#7A1921',
+
+  'primary': '#4F709C',       // Azul escuro porém claro
+  'secondary': '#6B9AC4',     // Azul levemente mais claro
+  'background': '#EAF4FB',    // Azul quase branco para fundo
+  'surface': '#D6E6F2',       // Cartões e elementos internos
+  'textPrimary': '#FFFFFF',   // Para texto em cima do azul
+  'textSecondary': '#2B3A55' // Para textos escuros em fundo claro
 } as const;
