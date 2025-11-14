@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import {
   ButtonContainer,
   ButtonLogin,
@@ -9,9 +9,11 @@ import {
   LoginContainer,
 } from "./styles";
 import { useNavigate } from "react-router-dom";
-import { loginUser, registerUser } from "../../services/userServices";
+import { getUserById, loginUser, registerUser } from "../../services/userServices";
 
 export function Login() {
+  const [user, setUser] = useState<{ name: string } | null>(null);
+
   const [isRegister, setIsRegister] = useState(false);
   const [form, setForm] = useState({
     email: "",
@@ -22,6 +24,17 @@ export function Login() {
   const [error, setError] = useState<string | null>(null)
 
   const navigate = useNavigate()
+
+
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      getUserById(Number(userId))
+        .then(setUser)
+        .catch(() => setUser(null));
+    }
+  }, []);
 
   async function handleSubmit(e: Event) {
     e.preventDefault();
@@ -40,7 +53,8 @@ export function Login() {
       }
     } else {
       try {
-        await loginUser({ email: form.email, password: form.password })
+        const response = await loginUser({ email: form.email, password: form.password })
+        localStorage.setItem("userId", response.id)
         navigate("/home ")
       } catch (err: any) {
         setError(err.message)
@@ -56,7 +70,7 @@ export function Login() {
 
   return (
     <LoginContainer>
-      <h1>Bem vindo ao ecommerce front</h1>
+      <h1>Bem vindo ao ecommerce front qualquer mensagemmmm</h1>
 
       <CardLogin>
         <CardLoginContent>

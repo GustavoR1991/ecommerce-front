@@ -38,7 +38,7 @@ export async function getUsers() {
 // Buscar usuário por ID
 export async function getUserById(id: number) {
   try {
-    const response = await axios.get(`${API_URL}/api/users${id}`);
+    const response = await axios.get(`${API_URL}/api/users/${id}`);
     return response.data;
   } catch {
     throw new Error("Erro ao buscar usuário por ID");
